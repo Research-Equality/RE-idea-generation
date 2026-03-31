@@ -1,0 +1,90 @@
+# Ideation Graph
+
+**Session started:** [timestamp]
+**Concept seed:** [name/path of the seed document]
+**Maintained by:** Writer (updated in real time as dialogue progresses)
+
+---
+
+## Active Threads
+
+_Directions currently being explored by the Free Thinker and Grounder._
+
+### Thread [letter]: [Short Name]
+
+**Opened:** [round/timestamp]
+**Status:** Active / Parked / Reported / Abandoned
+**Spawned from:** [parent thread, or "original seed"]
+
+**Current state:** [1-2 sentences on where the dialogue currently is on this thread]
+
+**Key moves so far:**
+1. [FT proposed X]
+2. [GR grounded with Y, surfaced constraint Z]
+3. [FT pivoted to...]
+
+## Interesting (Arbiter-Confirmed)
+
+_Threads the Arbiter has flagged as interesting. These have passed evaluation._
+
+### [Idea Title]
+
+**From thread:** [letter]
+**Idea report:** [filename]
+**Arbiter's note:** [what they flagged as interesting, if stated]
+**Brief status:** Pending / In progress / Complete
+
+## Needs More Conversation
+
+_Items the Arbiter has sent back for further exploration._
+
+### [Idea/Direction]
+
+**From thread:** [letter]
+**Arbiter's guidance:** [what they want explored further]
+**Status:** Returned to dialogue / Resolved into new report
+
+## Abandoned Threads
+
+_Directions that were explored and set aside. These are not failures. They are
+the map of where the conversation went. Future sessions may find value here._
+
+### Thread [letter]: [Short Name]
+
+**Explored during:** [rounds/timestamps]
+**Why abandoned:** [brief, honest reason]
+**Salvageable elements:** [anything that might be worth revisiting]
+
+## Connections
+
+_Patterns the Writer is noticing across threads. Ideas that influence each other,
+constraints that recur, themes that keep surfacing._
+
+- **[Pattern name]**: [description of what connects across threads]
+
+## Session Timeline
+
+_Major moments in the session, in order. Not every exchange, just the turns
+that shaped the direction of the whole conversation._
+
+| Round | What Happened | Impact |
+|-------|---------------|--------|
+| 1 | FT opened with three initial directions | Set the exploration landscape |
+| 3 | GR found constraint X in Thread A | Led to fork into A.1 and A.2 |
+| 5 | Arbiter flagged Thread B as interesting | Shifted dialogue focus toward B-adjacent spaces |
+
+## Continuation Context
+
+### Recommended Continuation Points
+
+_Threads or directions that are most promising for further exploration._
+
+- **Thread [letter]: [name]** - [why this is worth continuing, what is unresolved]
+- **Connection between [X] and [Y]** - [emerging pattern worth dedicated exploration]
+
+### Session State at Close
+
+**Depth level used:** [quick | standard | deep | exhaustive]
+**Total idea reports:** [number]
+**Interesting list size:** [number]
+**Convergence quality:** [natural / forced / partial]

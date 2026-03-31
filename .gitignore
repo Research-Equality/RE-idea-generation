@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+*.pyc
+outputs/
+AI-research-SKILLs/
+agent-research-skills/
+ideation_team_skill/
+claude-scientific-skills/
