@@ -1,6 +1,6 @@
 ---
 name: ideation
-description: Orchestrates multi-agent ideation and problem discovery around a concept seed. Use when you need a longer-form session with explicit divergent and convergent roles, reusable artifacts, and continuation support.
+description: Orchestrates multi-agent ideation and problem discovery around a concept seed. Use only when one-shot workflows are not enough and you need a longer-form session with explicit divergent and convergent roles, reusable artifacts, and continuation support.
 version: 1.0.0
 author: Research-Equality
 license: MIT
@@ -429,4 +429,4 @@ By the end of a successful session, the repository should contain:
 ## Related Skills
 
 - In this repository: [creative-thinking-for-research](../creative-thinking-for-research/), [brainstorming-research-ideas](../brainstorming-research-ideas/), [idea-generation](../idea-generation/), [novelty-assessment](../novelty-assessment/)
-- Companion repositories: literature-search, implementation-planning, paper-writing
+- Downstream literature work, implementation planning, and paper writing should stay in neighboring repositories rather than inside this skill.

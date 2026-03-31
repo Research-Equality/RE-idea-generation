@@ -16,45 +16,55 @@
 
 技能目录位于 [skills/](skills/)。
 
-- `brainstorming-research-ideas`
-  适合把一个模糊主题展开成多个候选方向，再通过 diverge → converge → refine 流程筛选并收敛
+### 主流程技能
+
 - `creative-thinking-for-research`
-  适合在思路卡住、缺乏新颖性或需要跨领域迁移时，使用认知科学框架生成更有跳跃性的研究方向
-- `idea-generation`
-  适合在已经有研究主题、部分 proposal 或代码上下文时，批量生成候选 idea，并给出 Interestingness / Feasibility / Novelty 评分
-- `template-grounded-ideation`
-  适合在已经有 `prompt.json`、`experiment.py`、`seed_ideas.json` 这类实验模板时，从现有代码边界、指标和资源约束里直接找 gap、生成可执行的新方向
-- `novelty-assessment`
-  适合在正式投入实现前，对候选方向做更严格的 novelty gate，判断是否只是已有工作的轻微变体
-- `ideation`
-  适合把一个概念种子交给多角色 ideation 流程持续展开，生成可继续迭代的 briefs、vision 文档、会话图谱与 lineage
-- `ideation-memory-evolution`
-  适合在 shortlist、验证失败或方向 pivot 之后，把“什么值得继续、什么该避免、为什么”沉淀成跨轮次可复用的 ideation memory
-- `gap-driven-stage-reflection`
-  适合在 baseline 或某个阶段结果出来后，围绕 unmet signals、可疑结果和新暴露的问题重写下一步计划
+  适合在卡思路、缺新颖性或需要认知框架来打开空间时使用
 - `scientific-brainstorming`
-  适合以科学研究伙伴的方式做开放式 brainstorm，发现研究空白、可疑假设和跨学科连接
+  适合在还没有清晰假设前，用“科研合作者式”的开放对话来找方向
+- `brainstorming-research-ideas`
+  适合把模糊主题展开成候选方向，再通过 diverge → converge → refine 收敛
+- `idea-generation`
+  适合在已有主题、部分 concept 或 runnable scaffold 时，把方向写成带评分的候选 proposal
+- `novelty-assessment`
+  适合在正式投入前做最后一道 novelty gate
+
+### 分支技能
+
 - `hypothesis-generation`
   适合从异常现象、初步结果或观察出发，产出可检验的竞争性假设、预测与实验思路
 - `scientific-critical-thinking`
   适合系统攻击一个 claim、paper 或研究方案，暴露偏差、混杂、证据薄弱点和真正值得追的问题
 
+### 运行层技能
+
+- `ideation`
+  适合把一个概念种子交给多角色 ideation 流程持续展开，生成可继续迭代的 briefs、vision 文档、会话图谱与 lineage
+- `direction-evolution`
+  适合在 shortlist、验证失败、方向 pivot 或阶段结果出来后，同时维护 ideation memory 和 evidence-driven 的 next-step update
+
 更详细的目录与路由规则见 [skills/README.md](skills/README.md)。
 
-## 技能路由
+## 推荐主流程
 
-- 当你缺的是“新角度”或“新颖性”，先用 `creative-thinking-for-research`
-- 当你缺的是“结构化筛选”和“把点子落成研究方向”，用 `brainstorming-research-ideas`
-- 当你已经有主题或代码上下文，想直接产出几条可执行候选方向时，用 `idea-generation`
-- 当你已经有可运行的实验模板，想围绕现有代码接口、评测切片和资源约束找问题、出方向时，用 `template-grounded-ideation`
-- 当你需要在真正开题前做最后一道“是否真的新”的检查时，用 `novelty-assessment`
-- 当你希望进行更长时间、角色分工明确的 ideation session，而不是单轮 brainstorm 时，用 `ideation`
-- 当你希望后续几轮 ideation 不再重复踩坑，而是继承上轮的判断和失败经验时，用 `ideation-memory-evolution`
-- 当实验阶段已经拿到结果，下一步应该由证据而不是直觉驱动时，用 `gap-driven-stage-reflection`
-- 当你需要一个更像科研合作者的开放式 brainstorm 对话时，用 `scientific-brainstorming`
-- 当你已经有观察结果、异常现象或初步数据，想把它们收敛成可检验假设时，用 `hypothesis-generation`
-- 当你想通过批判性分析来发现问题、识别证据漏洞或拆掉糟糕方案时，用 `scientific-critical-thinking`
-- 当任务既要发散又要收敛时，可以按 `creative-thinking-for-research` → `brainstorming-research-ideas` → `template-grounded-ideation` / `idea-generation` → `novelty-assessment` → `ideation-memory-evolution` 串起来
+为了尽量减少重叠，默认按这条线走：
+
+1. 先选一个开场技能：
+   `creative-thinking-for-research` 负责认知框架式发散，`scientific-brainstorming` 负责对话式科学探索。
+2. 用 `brainstorming-research-ideas` 做结构化收敛和 shortlist。
+3. 用 `idea-generation` 做 proposal 化：
+   topic-first 场景走普通模式，已有 runnable scaffold 的场景走 template-grounded 模式。
+4. 用 `novelty-assessment` 做最终 novelty gate。
+5. 用 `direction-evolution` 把这一轮学到的判断和后续更新沉淀下来。
+
+## 去冗余路由规则
+
+- 默认不要同时用 `creative-thinking-for-research` 和 `scientific-brainstorming`。前者是框架型发散，后者是对话型发散，先选一个。
+- `idea-generation` 已经包含 topic-first 和 template-grounded 两种模式，不再拆成两个 skill。
+- `ideation` 是多角色长会话的 orchestration 层，不是默认主流程里的必经步骤。
+- `scientific-critical-thinking` 是批判性分支，在“想法不够清楚”之外、当你主要缺的是 critique 时再用。
+- `hypothesis-generation` 适合从异常现象或已有观察出发，不适合作为 blank-topic ideation 的默认入口。
+- `direction-evolution` 只在 ranking、失败验证或阶段结果之后再用；它是 post-cycle 运行层，不是默认 ideation 入口。
 
 建议把运行过程中的产物放到：
 
@@ -81,18 +91,11 @@ skills/
     SKILL.md
     references/
     scripts/
-  template-grounded-ideation/
-    SKILL.md
-    references/
     templates/
   ideation/
     SKILL.md
     templates/
-  ideation-memory-evolution/
-    SKILL.md
-    references/
-    templates/
-  gap-driven-stage-reflection/
+  direction-evolution/
     SKILL.md
     references/
     templates/
@@ -130,15 +133,15 @@ Read skills/idea-generation/SKILL.md and generate 5 feasible ideas for repositor
 ```
 
 ```text
-Read skills/template-grounded-ideation/SKILL.md and use the current experiment template to find three under-tested failure modes plus two feasible new research directions grounded in the existing code.
+Read skills/idea-generation/SKILL.md in template-grounded mode and use the current experiment template to find three under-tested failure modes plus two feasible new research directions grounded in the existing code.
 ```
 
 ```text
-Read skills/ideation-memory-evolution/SKILL.md and update memory/ideation-memory.md from this shortlist, novelty report, and failed validation notes so the next ideation cycle avoids dead ends.
+Read skills/direction-evolution/SKILL.md in memory-update mode and update memory/ideation-memory.md from this shortlist, novelty report, and failed validation notes so the next ideation cycle avoids dead ends.
 ```
 
 ```text
-Read skills/gap-driven-stage-reflection/SKILL.md and convert the latest baseline results into a JSON plan update that identifies unmet success signals and the next diagnostic stage.
+Read skills/direction-evolution/SKILL.md in stage-reflection mode and convert the latest baseline results into a JSON plan update that identifies unmet success signals and the next diagnostic stage.
 ```
 
 ```text

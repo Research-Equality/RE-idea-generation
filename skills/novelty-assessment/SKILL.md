@@ -28,7 +28,7 @@ python skills/idea-generation/scripts/novelty_check.py \
 
 ### Manual literature search
 
-Search Semantic Scholar, arXiv, OpenAlex, or a companion literature-search skill if you have one available in a neighboring repository.
+Search Semantic Scholar, arXiv, or OpenAlex directly. If you have a literature-focused repository available elsewhere, use it only as external support rather than as the main ideation skill.
 
 ## References
 
@@ -93,4 +93,3 @@ formulation, or insight.
 ## Related Skills
 
 - In this repository: [idea-generation](../idea-generation/), [brainstorming-research-ideas](../brainstorming-research-ideas/), [creative-thinking-for-research](../creative-thinking-for-research/)
-- Companion repositories: literature-search, literature-review, related-work-writing

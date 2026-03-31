@@ -16,38 +16,46 @@ This repository focuses on the front end of the research workflow: finding worth
 
 The skill collection lives under [skills/](skills/).
 
-### Core Ideation Skills
+### Primary Flow Skills
 
-- `brainstorming-research-ideas`: structured diverge → converge → refine workflows for turning vague topics into ranked research candidates
-- `creative-thinking-for-research`: cognitive-science-inspired frameworks for novelty generation, analogy transfer, reformulation, and constraint breaking
-- `idea-generation`: generate candidate ideas from a topic, codebase, or existing concept, then score them on interestingness, feasibility, and novelty
-- `template-grounded-ideation`: generate ideas from an executable template package (`prompt.json` + `experiment.py` + `seed_ideas.json`), surfacing feasible gaps, intervention points, and next experiments grounded in existing code
-- `novelty-assessment`: run a harsher novelty gate before committing to a direction, with multi-round literature search and differentiation checks
-- `ideation`: run a structured multi-agent ideation session around a concept seed, with role separation, session memory, and reusable artifacts for continued problem discovery
-- `ideation-memory-evolution`: preserve promising directions, failed directions, and reusable decision heuristics across ideation and validation cycles
-- `gap-driven-stage-reflection`: turn completed stage results into concrete plan updates, unmet-signal diagnoses, and next-stage proposals
-- `scientific-brainstorming`: use a conversational, domain-aware scientific brainstorming partner to surface research gaps, assumptions, and interdisciplinary angles
+- `creative-thinking-for-research`: use when the bottleneck is novelty generation, reframing, or escaping local-optimum thinking
+- `scientific-brainstorming`: use when you want an open-ended, domain-aware thought partner before you have a crisp hypothesis
+- `brainstorming-research-ideas`: use when you need diverge → converge → refine with explicit filtering and ranking
+- `idea-generation`: use when you have a topic, partial concept, or runnable scaffold and need scored candidate proposals
+- `novelty-assessment`: use as the last ideation gate before committing to a direction
+
+### Branch Skills
+
 - `hypothesis-generation`: turn observations, anomalies, or preliminary data into competing testable hypotheses with predictions and experiment ideas
 - `scientific-critical-thinking`: interrogate claims, methods, evidence quality, and confounders to expose flaws, hidden assumptions, and genuine open problems
 
+### Operating Skills
+
+- `ideation`: run a structured multi-agent ideation session around a concept seed when one-shot workflows are not enough
+- `direction-evolution`: preserve cross-cycle direction memory and evidence-driven next-step updates after shortlisting, failed validation, or completed stages
+
 See [skills/README.md](skills/README.md) for the skill catalog and routing guidance.
 
-## Skill Routing
+## Canonical Flow
 
-To keep overlap low, the repository uses a layered ideation workflow:
+To keep overlap low, use this as the default path:
 
-- Start with `creative-thinking-for-research` when the problem is creative blockage, local-optimum thinking, or a need for genuinely novel angles
-- Use `brainstorming-research-ideas` when the goal is to structure a session, generate multiple candidates, rank them, and sharpen one into a concrete direction
-- Use `idea-generation` when you already have a topic, partial proposal, or code context and want concrete candidate ideas plus explicit scoring
-- Use `template-grounded-ideation` when you already have a runnable experiment scaffold or benchmark template and want ideas constrained by real code seams, metrics, and resource limits
-- Use `novelty-assessment` as the final novelty gate before committing to implementation or project planning
-- Use `ideation` when a single prompt is not enough and you want a longer-form session with explicit divergent/convergent roles, session lineage, and reusable artifacts
-- Use `ideation-memory-evolution` after shortlisting, failed validation, or pivots when you want future ideation to retain directional judgment instead of restarting cold
-- Use `gap-driven-stage-reflection` when a baseline or experiment stage has completed and the next problem to solve should be derived from evidence, not intuition
-- Use `scientific-brainstorming` when you want a scientific thought partner for open-ended ideation before you have a crisp hypothesis
-- Use `hypothesis-generation` when you already have observations or a phenomenon and need testable, competing explanations
-- Use `scientific-critical-thinking` when the best next move is to attack a claim, paper, or draft plan to find weak assumptions and underexplored gaps
-- Use the full chain for deeper work: generate raw ideas with `creative-thinking-for-research`, structure them with `brainstorming-research-ideas`, use `template-grounded-ideation` when code constraints dominate, turn finalists into scored proposals with `idea-generation`, stress-test them with `novelty-assessment`, and retain learning with `ideation-memory-evolution`
+1. Open the space with exactly one starter:
+   `creative-thinking-for-research` for novelty frameworks, or `scientific-brainstorming` for conversational scientific exploration.
+2. Structure and shortlist with `brainstorming-research-ideas`.
+3. Concretize with `idea-generation`:
+   use `topic-first` mode for conceptual inputs, or `template-grounded` mode when a runnable scaffold already exists.
+4. Run `novelty-assessment`.
+5. Preserve what was learned with `direction-evolution`.
+
+## Routing Rules
+
+- Do not use both `creative-thinking-for-research` and `scientific-brainstorming` by default. Pick one opener based on whether you need cognitive frameworks or a live scientific thought partner.
+- Use `idea-generation` in one of its two modes rather than splitting proposal generation across multiple skills.
+- Use `ideation` as an orchestration wrapper when a longer, role-separated session is needed. It is not part of the minimal default path.
+- Use `scientific-critical-thinking` as a critique branch before or after proposal generation when the bottleneck is weak reasoning rather than idea quantity.
+- Use `hypothesis-generation` when you start from anomalies, observations, or preliminary results rather than from open-ended ideation.
+- Use `direction-evolution` after ranking, failed validation, or completed stages. It is the post-cycle operating layer, not an initial ideation skill.
 
 Recommended shared artifacts:
 
@@ -74,18 +82,11 @@ skills/
     SKILL.md
     references/
     scripts/
-  template-grounded-ideation/
-    SKILL.md
-    references/
     templates/
   ideation/
     SKILL.md
     templates/
-  ideation-memory-evolution/
-    SKILL.md
-    references/
-    templates/
-  gap-driven-stage-reflection/
+  direction-evolution/
     SKILL.md
     references/
     templates/
@@ -123,15 +124,15 @@ Read skills/idea-generation/SKILL.md and generate 5 feasible ideas for repositor
 ```
 
 ```text
-Read skills/template-grounded-ideation/SKILL.md and use the current experiment template to find three under-tested failure modes plus two feasible new research directions grounded in the existing code.
+Read skills/idea-generation/SKILL.md in template-grounded mode and use the current experiment template to find three under-tested failure modes plus two feasible new research directions grounded in the existing code.
 ```
 
 ```text
-Read skills/ideation-memory-evolution/SKILL.md and update memory/ideation-memory.md from this shortlist, novelty report, and failed validation notes so the next ideation cycle avoids dead ends.
+Read skills/direction-evolution/SKILL.md in memory-update mode and update memory/ideation-memory.md from this shortlist, novelty report, and failed validation notes so the next ideation cycle avoids dead ends.
 ```
 
 ```text
-Read skills/gap-driven-stage-reflection/SKILL.md and convert the latest baseline results into a JSON plan update that identifies unmet success signals and the next diagnostic stage.
+Read skills/direction-evolution/SKILL.md in stage-reflection mode and convert the latest baseline results into a JSON plan update that identifies unmet success signals and the next diagnostic stage.
 ```
 
 ```text
