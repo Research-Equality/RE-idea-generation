@@ -1,0 +1,18 @@
+[
+  {
+    "Name": "baseline_sensitivity_map",
+    "Title": "Baseline Sensitivity Mapping for Hidden Failure Regimes",
+    "Experiment": "Expose a few high-leverage configuration knobs already present in the template, sweep them on a modest budget, and analyze where performance degrades or unexpectedly improves.",
+    "Interestingness": 6,
+    "Feasibility": 8,
+    "Novelty": 5
+  },
+  {
+    "Name": "evaluation_slice_gap_probe",
+    "Title": "Evaluation Slice Probing for Missing Generalization Failures",
+    "Experiment": "Add targeted evaluation slices that stress assumptions the current template makes, then compare whether the baseline behavior is consistent across those slices or collapses in predictable regimes.",
+    "Interestingness": 7,
+    "Feasibility": 7,
+    "Novelty": 6
+  }
+]

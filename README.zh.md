@@ -22,10 +22,16 @@
   适合在思路卡住、缺乏新颖性或需要跨领域迁移时，使用认知科学框架生成更有跳跃性的研究方向
 - `idea-generation`
   适合在已经有研究主题、部分 proposal 或代码上下文时，批量生成候选 idea，并给出 Interestingness / Feasibility / Novelty 评分
+- `template-grounded-ideation`
+  适合在已经有 `prompt.json`、`experiment.py`、`seed_ideas.json` 这类实验模板时，从现有代码边界、指标和资源约束里直接找 gap、生成可执行的新方向
 - `novelty-assessment`
   适合在正式投入实现前，对候选方向做更严格的 novelty gate，判断是否只是已有工作的轻微变体
 - `ideation`
   适合把一个概念种子交给多角色 ideation 流程持续展开，生成可继续迭代的 briefs、vision 文档、会话图谱与 lineage
+- `ideation-memory-evolution`
+  适合在 shortlist、验证失败或方向 pivot 之后，把“什么值得继续、什么该避免、为什么”沉淀成跨轮次可复用的 ideation memory
+- `gap-driven-stage-reflection`
+  适合在 baseline 或某个阶段结果出来后，围绕 unmet signals、可疑结果和新暴露的问题重写下一步计划
 - `scientific-brainstorming`
   适合以科学研究伙伴的方式做开放式 brainstorm，发现研究空白、可疑假设和跨学科连接
 - `hypothesis-generation`
@@ -40,20 +46,26 @@
 - 当你缺的是“新角度”或“新颖性”，先用 `creative-thinking-for-research`
 - 当你缺的是“结构化筛选”和“把点子落成研究方向”，用 `brainstorming-research-ideas`
 - 当你已经有主题或代码上下文，想直接产出几条可执行候选方向时，用 `idea-generation`
+- 当你已经有可运行的实验模板，想围绕现有代码接口、评测切片和资源约束找问题、出方向时，用 `template-grounded-ideation`
 - 当你需要在真正开题前做最后一道“是否真的新”的检查时，用 `novelty-assessment`
 - 当你希望进行更长时间、角色分工明确的 ideation session，而不是单轮 brainstorm 时，用 `ideation`
+- 当你希望后续几轮 ideation 不再重复踩坑，而是继承上轮的判断和失败经验时，用 `ideation-memory-evolution`
+- 当实验阶段已经拿到结果，下一步应该由证据而不是直觉驱动时，用 `gap-driven-stage-reflection`
 - 当你需要一个更像科研合作者的开放式 brainstorm 对话时，用 `scientific-brainstorming`
 - 当你已经有观察结果、异常现象或初步数据，想把它们收敛成可检验假设时，用 `hypothesis-generation`
 - 当你想通过批判性分析来发现问题、识别证据漏洞或拆掉糟糕方案时，用 `scientific-critical-thinking`
-- 当任务既要发散又要收敛时，可以按 `creative-thinking-for-research` → `brainstorming-research-ideas` → `idea-generation` → `novelty-assessment` 串起来
+- 当任务既要发散又要收敛时，可以按 `creative-thinking-for-research` → `brainstorming-research-ideas` → `template-grounded-ideation` / `idea-generation` → `novelty-assessment` → `ideation-memory-evolution` 串起来
 
 建议把运行过程中的产物放到：
 
 - `outputs/<topic-slug>/idea_backlog.md`
 - `outputs/<topic-slug>/problem_map.md`
 - `outputs/<topic-slug>/research_log.md`
+- `outputs/<topic-slug>/template_gap_map.md`
 - `outputs/<topic-slug>/direction_shortlist.md`
 - `outputs/<topic-slug>/novelty_report.json`
+- `outputs/<topic-slug>/stage_reflection.json`
+- `memory/ideation-memory.md`
 - `ideations/ideation-<slug>-<timestamp>/session/`
 
 ## 目录结构
@@ -69,8 +81,20 @@ skills/
     SKILL.md
     references/
     scripts/
+  template-grounded-ideation/
+    SKILL.md
+    references/
+    templates/
   ideation/
     SKILL.md
+    templates/
+  ideation-memory-evolution/
+    SKILL.md
+    references/
+    templates/
+  gap-driven-stage-reflection/
+    SKILL.md
+    references/
     templates/
   scientific-brainstorming/
     SKILL.md
@@ -106,6 +130,18 @@ Read skills/idea-generation/SKILL.md and generate 5 feasible ideas for repositor
 ```
 
 ```text
+Read skills/template-grounded-ideation/SKILL.md and use the current experiment template to find three under-tested failure modes plus two feasible new research directions grounded in the existing code.
+```
+
+```text
+Read skills/ideation-memory-evolution/SKILL.md and update memory/ideation-memory.md from this shortlist, novelty report, and failed validation notes so the next ideation cycle avoids dead ends.
+```
+
+```text
+Read skills/gap-driven-stage-reflection/SKILL.md and convert the latest baseline results into a JSON plan update that identifies unmet success signals and the next diagnostic stage.
+```
+
+```text
 Read skills/ideation/SKILL.md and run a standard-depth ideation session for "tools that help researchers surface evaluation blind spots", producing a vision doc, idea briefs, and an ideation graph.
 ```
 
@@ -132,6 +168,12 @@ Read skills/hypothesis-generation/SKILL.md and turn these anomalous evaluation r
 - `claude-scientific-skills/scientific-skills/scientific-brainstorming`
 - `claude-scientific-skills/scientific-skills/hypothesis-generation`
 - `claude-scientific-skills/scientific-skills/scientific-critical-thinking`
+- `ai-scientist/ai_scientist/generate_ideas.py`
+- `ai-scientist/README.md`（模板结构说明）
+- `ai-scientist/templates/nanoGPT_lite/prompt.json`
+- `ai-scientist/templates/nanoGPT_lite/seed_ideas.json`
+- `EvoScientist/EvoScientist/prompts.py`
+- `EvoScientist/EvoScientist/subagent.yaml`
 
 仓库最终以 [skills/](skills/) 下的整理版本为准。
 
